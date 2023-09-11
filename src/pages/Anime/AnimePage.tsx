@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Animes } from "../../common/Interface/types";
+import { getAnimes } from "../../services/axios.service";
+import AnimeCard from "../../components/AnimeCard";
 
 const AnimePage = () => {
+   const [animeData, setAnimeData] = useState<Animes[]>([]);
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const animes = await getAnimes();
+            setAnimeData(animes);
+         } catch (error) {
+            console.log(error);
+         }
+      }
+
+      fetchData();
+   },[]);
+
    return (
-      <div className="flex flex-col items-center mt-[10%]">
-         <h1 className="text-6xl p-5 text-gray">Ooops!</h1>
-         <h2 className="text-2xl p-5 text-gray">Anime Page in Construction</h2>
-         <Link to="/">
-            <button className="btn btn-primary">Back to Home</button>
-         </Link>
-      </div>
+      <ul className="grid  gap-x-8 gap-y-10 grid-cols-5 lg:grid-cols-lg md:pt-10 md:ml-20">
+         {animeData?.map((anime) => (
+            <li key={anime.mal_id}>
+               <AnimeCard {...anime}/>
+            </li>
+         ))}
+      </ul>
    )
 };
 

@@ -3,14 +3,15 @@ export const POPULAR_MOVIES_API_URL = "https://api.themoviedb.org/3/movie/popula
 export const CONTINUE_WATCHING_API_URL = "https://api.themoviedb.org/3/movie/now_playing"
 export const TOP_RATED_MOVIES_API_URL = "https://api.themoviedb.org/3/movie/top_rated"
 export const TRENDING_ALL_API_URL = "https://api.themoviedb.org/3/trending/all/day"
-
-export const UPCOMING_MOVIES_API_URL = "https://api.themoviedb.org/3/movie/upcoming"
-export const DISCOVER_MOVIES_API_URL = "https://api.themoviedb.org/3/discover/movie"
-export const TRENDING_MOVIE_WEEK_API_URL = "https://api.themoviedb.org/3/trending/movie/week"
-export const TRENDING_MOVIE_DAY_API_URL = "https://api.themoviedb.org/3/trending/movie/day"
-
+export const TRENDING_ALL_WEEK_API_URL = "https://api.themoviedb.org/3/trending/all/week"
 export const GENRE_MOVIES_API_URL = "https://api.themoviedb.org/3/genre/movie/list"
-export const GENRE_TV_API_URL = "https://api.themoviedb.org/3/genre/tv/list"
-
-export const ANIME_API_URL = "https://api.jikan.moe/v4"
+export const ANIME_API_URL = "https://api.jikan.moe/v4/top/anime"
 export const imgUrl = "https://image.tmdb.org/t/p/original"
+export const TV_TRENDING_API_URL ="https://api.themoviedb.org/3/trending/tv/day"
+export const TV_POPULAR_API_URL = "https://api.themoviedb.org/3/tv/popular"
+export const TV_AIRING_TODAY_API_URL = "https://api.themoviedb.org/3/tv/airing_today"
+export const TV_TOP_RATED_API_URL = "https://api.themoviedb.org/3/tv/top_rated"
+export const MOVIE_VIDEO_TRAILER_APU_URL = `https://api.themoviedb.org/3/movie/{movie_id}/videos`
+export const YOUTUBE_TRAILER_URL = `https://www.youtube.com/embed/{key}`
+export const TV_VIDEO_TRAILER_API_URL = "https://api.themoviedb.org/3/tv/{trailer_id}/videos"
+export const SEARCH_API_URL = "https://api.themoviedb.org/3/search/multi"

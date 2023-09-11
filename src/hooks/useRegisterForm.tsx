@@ -5,9 +5,6 @@ import { useState } from 'react';
 
 const useRegisterForm = () => {
     const { signIn, logInWithGoogle, logInWithGithub } = useAuth();
-    const [googleError, setGoogleError] = useState<string | null>(null);
-    const [githubError, setGithubError] = useState<string | null>(null);
-    const [submitError, setSubmitError] = useState<string | null>(null);
 
 
     const initialValues = {
@@ -32,9 +29,7 @@ const useRegisterForm = () => {
         try {
            await logInWithGoogle();
         } catch (error) {
-            if (error instanceof Error) {
-                setGoogleError(error.message);
-            }
+            throw new Error('Error al iniciar sesión con Google' + error);
         }
     };
 
@@ -42,9 +37,7 @@ const useRegisterForm = () => {
         try {
             await logInWithGithub();
         } catch (error) {
-            if (error instanceof Error) {
-                setGithubError(error.message);
-            }
+            throw new Error('Error al iniciar sesión con Github' + error);
         }
     };
 
@@ -56,14 +49,12 @@ const useRegisterForm = () => {
                 await signIn(values.email, values.password);
                 formik.resetForm();
             } catch (error) {
-                if (error instanceof Error) {
-                    setSubmitError(error.message);
-                }
+                throw new Error('Error al iniciar sesión' + error);
             }
         },
     });
 
-    return { formik, handleGoogle, handleGithub, googleError, githubError, submitError };
+    return { formik, handleGoogle, handleGithub };
 };
 
 export default useRegisterForm;

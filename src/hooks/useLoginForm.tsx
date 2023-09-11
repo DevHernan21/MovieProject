@@ -7,8 +7,6 @@ import { useState } from 'react';
 
 const useLoginForm = () => {
     const { signIn, logInWithGoogle } = useAuth();
-    const [googleError, setGoogleError] = useState<string | null>(null);
-    const [submitError, setSubmitError] = useState<string | null>(null);
 
 
     const initialValues = {
@@ -31,9 +29,7 @@ const useLoginForm = () => {
         try {
            await logInWithGoogle();
         } catch (error) {
-            if (error instanceof Error) {
-                setGoogleError(error.message);
-            }
+            throw new Error('Error al iniciar sesión con Google' + error);
         }
     };
 
@@ -45,9 +41,7 @@ const useLoginForm = () => {
                 await signIn(values.email, values.password);
                 formik.resetForm();
             } catch (error) {
-                if (error instanceof Error) {
-                    setSubmitError(error.message);
-                }
+                throw new Error('Error al iniciar sesión' + error);
             }
         },
     });

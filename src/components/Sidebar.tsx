@@ -20,7 +20,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) => {
     }
 
     return (
-        <div className={`shrink-0 h-full md:max-w-[260px] w-[70vw] bg-zinc-900 fixed  -translate-x-full transition duration-300 ${isSidebarOpen && "translate-x-0"
+        <div className={`max-w-full max-h-full w-11/12 shrink-0 h-full md:max-w-[260px] w-[70vw] bg-zinc-900 fixed  -translate-x-full transition duration-300 ${isSidebarOpen && "translate-x-0"
             } top-0 shadow-md md:sticky md:translate-x-0 md:bg-transparent md:shadow-none z-50`}>
             {!isMobile && (
                 <>

@@ -1,24 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { RouterProvider } from 'react-router-dom';
-import Loader from './common/Loader';
-import { router } from './routes/routes';
-import AuthProvider from './context/AuthProvider';
-
+import { Route, Routes } from 'react-router-dom';
+import Login from './pages/Authentication/Login';
+import DefaultLayout from './layout/DefaultLayout';
+import MoviesPage from './pages/Home/MoviesPage';
+import TVShowsPage from './pages/TVShows/TVShowsPage';
+import AnimePage from './pages/Anime/AnimePage';
+import PlansPage from './pages/Plans/PlansPage';
+import NotFoundPage from './pages/NotFound/NotFoundPage';
+import Register from './pages/Authentication/Register';
 
 function App() {
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, [])
-
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="/" element={<MoviesPage />} />
+          <Route path="/tv-shows" element={<TVShowsPage />} />
+          <Route path="/anime" element={<AnimePage />} />
+          <Route path="/plans" element={<PlansPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
     </>
   );
 }

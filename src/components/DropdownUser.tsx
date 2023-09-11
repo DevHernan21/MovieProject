@@ -2,13 +2,14 @@ import { Menu, Transition } from "@headlessui/react"
 import { ChevronDownIcon } from "@heroicons/react/24/solid"
 import { Fragment } from "react"
 import { useAuth } from "../context/AuthProvider";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
 };
 const DropdownUser = () => {
     const { user, logOut } = useAuth();
+    const navigate = useNavigate()
     const userNavigation = [
         { name: `Wellcome ${user?.displayName}` },
         { name: 'Your Profile', redirectTo: '/' },
@@ -18,7 +19,7 @@ const DropdownUser = () => {
 
     const handleItemClick = (item: any) => {
         if (item.redirectTo) {
-            Navigate(item.redirectTo);
+            navigate(item.redirectTo);
         } else if (item.logout) {
             logOut();
         }
